@@ -29,5 +29,5 @@ class Stats:
 
     def greater(self, number: int) -> int:
         if number <= 0:
-            return self.counter_list[number]
+            return self.counter_list[-1]
         return self.counter_list[-1] - self.counter_list[number]

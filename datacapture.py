@@ -20,6 +20,8 @@ class DataCapture:
         if number > 0:
             self.captured_numbers[number] = self.captured_numbers.get(number, 0) + 1
             self._update_max(number)
+        else:
+            raise DataCaptureException("Only numbers greater than zero are allowed")
 
     def _get_updated_counter(self, index: int, counter_list: List[int]) -> List[int]:
         if index == 0:  # We will not process the 0 index as it represents the number zero, which is not positive

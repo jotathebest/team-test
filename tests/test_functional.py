@@ -20,6 +20,9 @@ class TestStats(unittest.TestCase):
         assert 1 == stats.between(5, 6)
         assert 0 == stats.between(7, 8)
         assert 2 == stats.greater(4)
+        assert 5 == stats.greater(-1)
+        assert 5 == stats.greater(-10)
+        assert 5 == stats.greater(0)
 
     def test_between(self):
         capture = DataCapture()

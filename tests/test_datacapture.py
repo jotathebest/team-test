@@ -10,12 +10,15 @@ class TestDataCapture(unittest.TestCase):
         self.test_instance = DataCapture()
 
     def test_add_does_not_update_stored_numbers(self):
-        number = 0
-        self.test_instance.add(number)
-        assert not self.test_instance.captured_numbers
-        number = -1
-        self.test_instance.add(number)
-        assert not self.test_instance.captured_numbers
+        error_message = "Only numbers greater than zero are allowed"
+        with self.assertRaises(DataCaptureException) as context:
+            number = 0
+            self.test_instance.add(number)
+        assert error_message in context.exception.args[0]
+        with self.assertRaises(DataCaptureException) as context:
+            number = -1
+            self.test_instance.add(number)
+        assert error_message in context.exception.args[0]
 
     def test_add_updates_stored_numbers(self):
         number = 2
